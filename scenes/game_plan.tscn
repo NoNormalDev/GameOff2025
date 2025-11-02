@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://oe1fkr7pnqfm"]
+[gd_scene load_steps=16 format=3 uid="uid://oe1fkr7pnqfm"]
 
 [ext_resource type="Script" uid="uid://derkjqvdykqw4" path="res://scripts/game_plan.gd" id="1_64cwe"]
 [ext_resource type="Texture2D" uid="uid://1dlnbg81s6yh" path="res://external/laminate_floor_03_1k/laminate_floor_03_diff_1k.jpg" id="2_q1e77"]
+[ext_resource type="Texture2D" uid="uid://w2016jnahg4c" path="res://external/plywood_1k/plywood_diff_1k.jpg" id="3_ihj41"]
 
 [sub_resource type="Shader" id="Shader_64cwe"]
 code = "shader_type canvas_item;
@@ -69,6 +70,35 @@ shader_parameter/brightness = 0.595
 [sub_resource type="QuadMesh" id="QuadMesh_ac0ro"]
 size = Vector2(50, 1080)
 
+[sub_resource type="Shader" id="Shader_ljmk2"]
+code = "shader_type canvas_item;
+
+uniform vec2 size;
+uniform sampler2D tex: filter_linear, repeat_enable;
+uniform float scale;
+uniform float brightness;
+uniform float saturation;
+
+void vertex() {
+	UV.y *= size.y/size.x;
+	UV *= scale;
+}
+
+void fragment() {
+	COLOR.rgb = texture(tex, UV).rgb * brightness;
+	float luma = dot(COLOR.rgb, vec3(0.299, 0.587, 0.114));
+	COLOR.rgb = mix(vec3(luma),COLOR.rgb,saturation);
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ac0ro"]
+shader = SubResource("Shader_ljmk2")
+shader_parameter/size = Vector2(750, 125)
+shader_parameter/tex = ExtResource("3_ihj41")
+shader_parameter/scale = 1.85
+shader_parameter/brightness = 1.8399999999999999
+shader_parameter/saturation = 0.0
+
 [sub_resource type="QuadMesh" id="QuadMesh_q1e77"]
 size = Vector2(750, 125)
 
@@ -100,5 +130,6 @@ position = Vector2(-523, 0)
 mesh = SubResource("QuadMesh_ac0ro")
 
 [node name="MeshInstance2D2" type="MeshInstance2D" parent="Game/Shop"]
+material = SubResource("ShaderMaterial_ac0ro")
 position = Vector2(0, -401)
 mesh = SubResource("QuadMesh_q1e77")
