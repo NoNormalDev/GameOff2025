@@ -26,8 +26,5 @@ func update_window_borders() -> void:
 	_node_game.scale.x = game_scale
 	_node_game.scale.y = game_scale
 
-# Light Color = Color("#5EF871")
-# Dark Color = Color("#4BC659")
-
 func _process(_delta: float) -> void:
 	update_window_borders()
