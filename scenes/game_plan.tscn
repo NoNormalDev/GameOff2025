@@ -1,7 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://oe1fkr7pnqfm"]
+[gd_scene load_steps=12 format=3 uid="uid://oe1fkr7pnqfm"]
 
 [ext_resource type="Script" uid="uid://derkjqvdykqw4" path="res://scripts/game_plan.gd" id="1_64cwe"]
-[ext_resource type="Texture2D" uid="uid://b33jwxb6gign7" path="res://external/wood_planks_1k/wood_planks_diff_1k.jpg" id="2_q1e77"]
+[ext_resource type="Texture2D" uid="uid://1dlnbg81s6yh" path="res://external/laminate_floor_03_1k/laminate_floor_03_diff_1k.jpg" id="2_q1e77"]
 
 [sub_resource type="Shader" id="Shader_64cwe"]
 code = "shader_type canvas_item;
@@ -35,11 +35,29 @@ void fragment() {
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ihj41"]
 shader = SubResource("Shader_q1e77")
 shader_parameter/tex = ExtResource("2_q1e77")
-shader_parameter/scale = 1.0
-shader_parameter/brightness = 1.0
+shader_parameter/scale = 2.2800000000000002
+shader_parameter/brightness = 1.0689656
 
 [sub_resource type="QuadMesh" id="QuadMesh_ljmk2"]
 size = Vector2(1080, 1080)
+
+[sub_resource type="Shader" id="Shader_ihj41"]
+code = "shader_type canvas_item;
+
+uniform vec2 size;
+uniform sampler2D tex;
+
+void fragment() {
+	// Called for every pixel the material is visible on.
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ljmk2"]
+shader = SubResource("Shader_ihj41")
+shader_parameter/size = Vector2(0, 0)
+
+[sub_resource type="QuadMesh" id="QuadMesh_ac0ro"]
+size = Vector2(50, 1080)
 
 [node name="GamePlan" type="Node2D"]
 script = ExtResource("1_64cwe")
@@ -56,7 +74,14 @@ material = SubResource("ShaderMaterial_q1e77")
 position = Vector2(960, 540)
 mesh = SubResource("QuadMesh_64cwe")
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="Game"]
-material = SubResource("ShaderMaterial_ihj41")
+[node name="Shop" type="Node2D" parent="Game"]
 position = Vector2(1380, 540)
+
+[node name="BG" type="MeshInstance2D" parent="Game/Shop"]
+material = SubResource("ShaderMaterial_ihj41")
 mesh = SubResource("QuadMesh_ljmk2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Game/Shop"]
+material = SubResource("ShaderMaterial_ljmk2")
+position = Vector2(-536, 0)
+mesh = SubResource("QuadMesh_ac0ro")
