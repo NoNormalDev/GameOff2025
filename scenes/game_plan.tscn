@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://oe1fkr7pnqfm"]
+[gd_scene load_steps=3 format=3 uid="uid://oe1fkr7pnqfm"]
 
 [ext_resource type="Script" uid="uid://derkjqvdykqw4" path="res://scripts/game_plan.gd" id="1_64cwe"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_64cwe"]
+size = Vector2(1820, 980)
 
 [node name="GamePlan" type="Node2D"]
 script = ExtResource("1_64cwe")
@@ -11,3 +14,7 @@ offset_bottom = 40.0
 color = Color(0.13333334, 0.13333334, 0.21568628, 1)
 
 [node name="Game" type="Node2D" parent="."]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Game"]
+position = Vector2(960, 540)
+mesh = SubResource("QuadMesh_64cwe")
