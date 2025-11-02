@@ -1,9 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://oe1fkr7pnqfm"]
+[gd_scene load_steps=5 format=3 uid="uid://oe1fkr7pnqfm"]
 
 [ext_resource type="Script" uid="uid://derkjqvdykqw4" path="res://scripts/game_plan.gd" id="1_64cwe"]
 
+[sub_resource type="Shader" id="Shader_64cwe"]
+code = "shader_type canvas_item;
+
+uniform vec3 clr: source_color;
+
+void fragment() {
+	COLOR.rgb = clr;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q1e77"]
+shader = SubResource("Shader_64cwe")
+shader_parameter/clr = Color(0.1971, 0.6056568, 0.73, 1)
+
 [sub_resource type="QuadMesh" id="QuadMesh_64cwe"]
-size = Vector2(1820, 980)
+size = Vector2(1920, 1080)
 
 [node name="GamePlan" type="Node2D"]
 script = ExtResource("1_64cwe")
@@ -11,10 +25,11 @@ script = ExtResource("1_64cwe")
 [node name="Borders" type="ColorRect" parent="."]
 offset_right = 40.0
 offset_bottom = 40.0
-color = Color(0.13333334, 0.13333334, 0.21568628, 1)
+color = Color(0.19607843, 0.6039216, 0.7294118, 1)
 
 [node name="Game" type="Node2D" parent="."]
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="Game"]
+[node name="Background" type="MeshInstance2D" parent="Game"]
+material = SubResource("ShaderMaterial_q1e77")
 position = Vector2(960, 540)
 mesh = SubResource("QuadMesh_64cwe")
