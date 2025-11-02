@@ -1,6 +1,37 @@
-[gd_scene load_steps=2 format=3 uid="uid://w3ryxb7oakr2"]
+[gd_scene load_steps=6 format=3 uid="uid://w3ryxb7oakr2"]
 
 [ext_resource type="Script" uid="uid://ht20k1t4sllf" path="res://scripts/grass_tile.gd" id="1_8acc7"]
+[ext_resource type="Texture2D" uid="uid://bg17aq171psqx" path="res://external/Grass005-1K/Grass005_1K-JPG_Color.jpg" id="2_quhsi"]
+
+[sub_resource type="Shader" id="Shader_8acc7"]
+code = "shader_type canvas_item;
+
+uniform sampler2D tex: filter_linear;
+uniform float bright;
+uniform float scale;
+
+void fragment() {
+	COLOR.rgb = texture(tex,UV*scale).rgb * bright;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_quhsi"]
+shader = SubResource("Shader_8acc7")
+shader_parameter/tex = ExtResource("2_quhsi")
+shader_parameter/bright = 1.0
+shader_parameter/scale = 0.4
+
+[sub_resource type="QuadMesh" id="QuadMesh_6p6wi"]
+size = Vector2(128, 128)
 
 [node name="GrassTile" type="Node2D"]
 script = ExtResource("1_8acc7")
+
+[node name="Button" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+material = SubResource("ShaderMaterial_quhsi")
+mesh = SubResource("QuadMesh_6p6wi")
+
+[connection signal="button_down" from="Button" to="." method="_button_pressed"]
