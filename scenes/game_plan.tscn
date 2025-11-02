@@ -45,16 +45,26 @@ size = Vector2(1080, 1080)
 code = "shader_type canvas_item;
 
 uniform vec2 size;
-uniform sampler2D tex;
+uniform sampler2D tex: filter_linear, repeat_enable;
+uniform float scale;
+uniform float brightness;
+
+void vertex() {
+	UV.x /= size.y/size.x;
+	UV *= scale;
+}
 
 void fragment() {
-	// Called for every pixel the material is visible on.
+	COLOR.rgb = texture(tex, UV).rgb * brightness;
 }
 "
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ljmk2"]
 shader = SubResource("Shader_ihj41")
-shader_parameter/size = Vector2(0, 0)
+shader_parameter/size = Vector2(50, 1080)
+shader_parameter/tex = ExtResource("2_q1e77")
+shader_parameter/scale = 0.0
+shader_parameter/brightness = 0.0
 
 [sub_resource type="QuadMesh" id="QuadMesh_ac0ro"]
 size = Vector2(50, 1080)
