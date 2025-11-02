@@ -38,7 +38,7 @@ void fragment() {
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ihj41"]
 shader = SubResource("Shader_q1e77")
 shader_parameter/tex = ExtResource("2_q1e77")
-shader_parameter/scale = 2.2800000000000002
+shader_parameter/scale = 2.28
 shader_parameter/brightness = 1.0689656
 
 [sub_resource type="QuadMesh" id="QuadMesh_ljmk2"]
@@ -66,7 +66,7 @@ void fragment() {
 shader = SubResource("Shader_ihj41")
 shader_parameter/size = Vector2(50, 1081.96)
 shader_parameter/tex = ExtResource("2_q1e77")
-shader_parameter/scale = 2.2800000000000002
+shader_parameter/scale = 2.28
 shader_parameter/brightness = 0.595
 
 [sub_resource type="QuadMesh" id="QuadMesh_ac0ro"]
@@ -98,7 +98,7 @@ shader = SubResource("Shader_ljmk2")
 shader_parameter/size = Vector2(750, 125)
 shader_parameter/tex = ExtResource("3_ihj41")
 shader_parameter/scale = 0.93
-shader_parameter/brightness = 1.7349999999999999
+shader_parameter/brightness = 1.735
 shader_parameter/saturation = 0.64
 
 [sub_resource type="QuadMesh" id="QuadMesh_q1e77"]
@@ -154,26 +154,28 @@ label_settings = SubResource("LabelSettings_ngn38")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Screw" type="Sprite2D" parent="Game"]
-position = Vector2(1016, 88)
+[node name="Screw" type="Sprite2D" parent="Game/Shop/TitleBG"]
+position = Vector2(-364, -51)
 rotation = -0.7853982
+scale = Vector2(0.24999999, 0.24999999)
+texture = ExtResource("5_uwn5l")
+
+[node name="Screw2" type="Sprite2D" parent="Game/Shop/TitleBG"]
+position = Vector2(-363, 49.99997)
+rotation = 2.9594812
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("5_uwn5l")
 
-[node name="Screw2" type="Sprite2D" parent="Game"]
-position = Vector2(1017, 188.99997)
-rotation = -3.323704
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("5_uwn5l")
-
-[node name="Screw3" type="Sprite2D" parent="Game"]
-position = Vector2(1744, 88.99997)
+[node name="Screw3" type="Sprite2D" parent="Game/Shop/TitleBG"]
+position = Vector2(364, -50.00003)
 rotation = -0.44197345
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("5_uwn5l")
 
-[node name="Screw4" type="Sprite2D" parent="Game"]
-position = Vector2(1742, 187.99997)
+[node name="Screw4" type="Sprite2D" parent="Game/Shop/TitleBG"]
+position = Vector2(362, 48.99997)
 rotation = -2.913574
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("5_uwn5l")
+
+[node name="TileMap" type="Node2D" parent="Game"]

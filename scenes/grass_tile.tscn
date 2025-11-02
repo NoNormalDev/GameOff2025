@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://w3ryxb7oakr2"]
+
+[ext_resource type="Script" uid="uid://ht20k1t4sllf" path="res://scripts/grass_tile.gd" id="1_8acc7"]
+
+[node name="GrassTile" type="Node2D"]
+script = ExtResource("1_8acc7")
