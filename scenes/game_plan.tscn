@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://oe1fkr7pnqfm"]
+[gd_scene load_steps=13 format=3 uid="uid://oe1fkr7pnqfm"]
 
 [ext_resource type="Script" uid="uid://derkjqvdykqw4" path="res://scripts/game_plan.gd" id="1_64cwe"]
 [ext_resource type="Texture2D" uid="uid://1dlnbg81s6yh" path="res://external/laminate_floor_03_1k/laminate_floor_03_diff_1k.jpg" id="2_q1e77"]
@@ -63,11 +63,14 @@ void fragment() {
 shader = SubResource("Shader_ihj41")
 shader_parameter/size = Vector2(50, 1080)
 shader_parameter/tex = ExtResource("2_q1e77")
-shader_parameter/scale = 0.0
-shader_parameter/brightness = 0.0
+shader_parameter/scale = 2.2800000000000002
+shader_parameter/brightness = 0.595
 
 [sub_resource type="QuadMesh" id="QuadMesh_ac0ro"]
 size = Vector2(50, 1080)
+
+[sub_resource type="QuadMesh" id="QuadMesh_q1e77"]
+size = Vector2(750, 125)
 
 [node name="GamePlan" type="Node2D"]
 script = ExtResource("1_64cwe")
@@ -93,5 +96,9 @@ mesh = SubResource("QuadMesh_ljmk2")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Game/Shop"]
 material = SubResource("ShaderMaterial_ljmk2")
-position = Vector2(-536, 0)
+position = Vector2(-523, 0)
 mesh = SubResource("QuadMesh_ac0ro")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="Game/Shop"]
+position = Vector2(0, -401)
+mesh = SubResource("QuadMesh_q1e77")

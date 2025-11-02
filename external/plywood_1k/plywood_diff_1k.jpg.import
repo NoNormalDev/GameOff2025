@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b33jwxb6gign7"
-path="res://.godot/imported/wood_planks_diff_1k.jpg-d59bba8414d978b9f1615a78a2009f85.ctex"
+uid="uid://w2016jnahg4c"
+path="res://.godot/imported/plywood_diff_1k.jpg-9b451683ae2cc0e633bf0844afa2ba97.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://external/wood_planks_1k/wood_planks_diff_1k.jpg"
-dest_files=["res://.godot/imported/wood_planks_diff_1k.jpg-d59bba8414d978b9f1615a78a2009f85.ctex"]
+source_file="res://external/plywood_1k/plywood_diff_1k.jpg"
+dest_files=["res://.godot/imported/plywood_diff_1k.jpg-9b451683ae2cc0e633bf0844afa2ba97.ctex"]
 
 [params]
 
