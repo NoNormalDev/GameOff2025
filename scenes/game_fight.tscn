@@ -1,15 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://bfmn6gt008n0c"]
+[gd_scene load_steps=7 format=3 uid="uid://bfmn6gt008n0c"]
 
-[ext_resource type="Texture2D" uid="uid://bg17aq171psqx" path="res://external/Grass005-1K/Grass005_1K-JPG_Color.jpg" id="1_cxknj"]
+[ext_resource type="Texture2D" uid="uid://boowitjxpb3aj" path="res://external/Grass008-1K/Grass008_1K-JPG_Color.jpg" id="1_ysmxf"]
+[ext_resource type="Texture2D" uid="uid://dwj3w73bggxam" path="res://external/Grass008-1K/Grass008_1K-JPG_NormalGL.jpg" id="2_pewl6"]
+[ext_resource type="Texture2D" uid="uid://cefrvh1dulwvn" path="res://external/Grass008-1K/Grass008_1K-JPG_Roughness.jpg" id="3_hpqlm"]
 
 [sub_resource type="Shader" id="Shader_eauam"]
 code = "shader_type spatial;
 
-uniform sampler2D tex: filter_linear_mipmap, repeat_enable;
+uniform sampler2D t_albedo: filter_linear_mipmap, repeat_enable;
+uniform sampler2D t_normal: filter_linear_mipmap, repeat_enable, hint_normal;
+uniform sampler2D t_rough: filter_linear_mipmap, repeat_enable, hint_roughness_r;
 uniform float scale;
 
 void fragment() {
-	
+	ALBEDO = texture(t_albedo,UV*scale).rgb;
+	//NORMAL_MAP = texture(t_normal,UV*scale).rgb;
+	ROUGHNESS = texture(t_albedo,UV*scale).r;
 }
 
 //void light() {
@@ -21,7 +27,9 @@ void fragment() {
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cxknj"]
 render_priority = 0
 shader = SubResource("Shader_eauam")
-shader_parameter/tex = ExtResource("1_cxknj")
+shader_parameter/t_albedo = ExtResource("1_ysmxf")
+shader_parameter/t_normal = ExtResource("2_pewl6")
+shader_parameter/t_rough = ExtResource("3_hpqlm")
 shader_parameter/scale = 23.0
 
 [sub_resource type="QuadMesh" id="QuadMesh_fxrkh"]
