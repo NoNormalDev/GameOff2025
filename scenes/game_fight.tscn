@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://bfmn6gt008n0c"]
+
+[ext_resource type="Texture2D" uid="uid://bg17aq171psqx" path="res://external/Grass005-1K/Grass005_1K-JPG_Color.jpg" id="1_cxknj"]
+
+[sub_resource type="Shader" id="Shader_eauam"]
+code = "shader_type spatial;
+
+uniform sampler2D tex: filter_linear_mipmap, repeat_enable;
+uniform float scale;
+
+void fragment() {
+	
+}
+
+//void light() {
+//	// Called for every pixel for every light affecting the material.
+//	// Uncomment to replace the default light processing function with this one.
+//}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cxknj"]
+render_priority = 0
+shader = SubResource("Shader_eauam")
+shader_parameter/tex = ExtResource("1_cxknj")
+shader_parameter/scale = 23.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_fxrkh"]
+size = Vector2(23, 23)
+subdivide_width = 7
+subdivide_depth = 5
+orientation = 1
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Ground" type="MeshInstance3D" parent="."]
+material_override = SubResource("ShaderMaterial_cxknj")
+mesh = SubResource("QuadMesh_fxrkh")
